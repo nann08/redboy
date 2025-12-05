@@ -5,29 +5,56 @@
     <!-- Viewport for robust mobile scaling and safe area handling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- iOS PWA Meta Tags -->
+    <!-- iOS PWA Meta Tags - MUST BE PRESENT ON LOAD -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Nann Boy">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#7f1d1d"> <!-- Matches background color -->
+    <meta name="theme-color" content="#7f1d1d">
     
     <title>Nann Emulator</title>
 
+    <!-- 1. Define Icon Data -->
     <script>
-        // High-res placeholder icon (Red square with Nann Boy logo style)
-        // In a real app, you would use the full uploaded base64 string here.
-        const ICON_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAAEg+pWNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+/Pvo88/gAAAJZSURBVHja7Nw9SstQGIBh8/tD0U1wFO7A3biZtXQPt7C2sLNxB07O4A4cFDqYQJtCUgT1POF7A4EkJ/zk5GFvR0dHR2fW6/V6fXl92Ww2X5fL5buPj4/vbrfb5+Fw+DydTp+m0+nz9XrtE4n7/f4z/X6/X6/X6/vj8fg1xvi62WxeZ7PZ12w2+57NZl+32+334XD4MpvNvnq93rd6vX6YTCbfp9Pp13a7/ZzP51/r9fqx1+t9rdfrh+l0+j2fzz9ns9nPfD7/ms/nP4fD4dtsNvtardbP4/H4Yz6ff0+n08/ZbPaz2Wx+1uv1w2Qy+ZpOp5+z2exns9n8rNfrh8lk8jWdTj9ns9nPZrP5Wa/XD5PJ5Gs6nX7OZrOfzWbzs16vHyaTydf/6fR7Pp9/zGazn/l8/jWfz38Oh8O32Wz2tVqtH4B/wAAAAAABAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAwD8CDAAh9QZ882j32AAAAABJRU5ErkJggg==';
+        const ICON_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAAEg+pWNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+/Pvo88/gAAAJZSURBVHja7Nw9SstQGIBh8/tD0U1wFO7A3biZtXQPt7C2sLNxB07O4A4cFDqYQJtCUgT1POF7A4EkJ/zk5GFvR0dHR2fW6/V6fXl92Ww2X5fL5buPj4/vbrfb5+Fw+DydTp+m0+nz9XrtE4n7/f4z/X6/X6/X6/vj8fg1xvi62WxeZ7PZ12w2+57NZl+32+334XD4MpvNvnq93rd6vX6YTCbfp9Pp13a7/ZzP51/r9fqx1+t9rdfrh+l0+j2fzz9ns9nPfD7/ms/nP4fD4dtsNvtardbP4/H4Yz6ff0+n08/ZbPaz2Wx+1uv1w2Qy+ZpOp5+z2exns9n8rNfrh8lk8jWdTj9ns9nPZrP5Wa/XD5PJ5Gs6nX7OZrOfzWbzs16vHyaTydf/6fR7Pp9/zGazn/l8/jWfz38Oh8O32Wz2tVqtH4B/wAAAAAABAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAwD8CDAAh9QZ882j32AAAAABJRU5ErkJggg==';
     </script>
 
-    <!-- PWA/iOS Home Screen Icon -->
+    <!-- 2. Placeholders for PWA Assets -->
     <link rel="apple-touch-icon" sizes="180x180" id="apple-icon" href="">
-
-    <!-- Standard Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" id="icon-32" href="">
     <link rel="icon" type="image/png" sizes="16x16" id="icon-16" href="">
-    
-    <!-- PWA Manifest (Injected via JS to ensure base64 correctness) -->
     <link rel="manifest" id="pwa-manifest" href="">
+
+    <!-- 3. SYNCHRONOUS INJECTION - Runs immediately to ensure iOS sees the icons -->
+    <script>
+        (function() {
+            const iconUrl = `data:image/png;base64,${ICON_BASE64}`;
+            
+            // Set Icons Immediately
+            document.getElementById('apple-icon').href = iconUrl;
+            document.getElementById('icon-32').href = iconUrl;
+            document.getElementById('icon-16').href = iconUrl;
+
+            // Generate Manifest Immediately
+            const manifest = {
+                "name": "Nann Boy",
+                "short_name": "NannBoy",
+                "start_url": ".",
+                "display": "standalone",
+                "background_color": "#7f1d1d",
+                "theme_color": "#7f1d1d",
+                "orientation": "portrait",
+                "icons": [{
+                    "src": iconUrl,
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }]
+            };
+            // Base64 encode the manifest
+            const manifestString = JSON.stringify(manifest);
+            const manifestBase64 = btoa(manifestString);
+            document.getElementById('pwa-manifest').href = `data:application/json;base64,${manifestBase64}`;
+        })();
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -521,30 +548,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // --- PWA ASSET INJECTION ---
-        // 1. Set Icons
-        const iconUrl = `data:image/png;base64,${ICON_BASE64}`;
-        document.getElementById('apple-icon').href = iconUrl;
-        document.getElementById('icon-32').href = iconUrl;
-        document.getElementById('icon-16').href = iconUrl;
-
-        // 2. Generate Valid Manifest Data URI
-        const manifest = {
-            "name": "Nann Boy",
-            "short_name": "NannBoy",
-            "start_url": ".",
-            "display": "standalone",
-            "background_color": "#7f1d1d",
-            "theme_color": "#7f1d1d",
-            "icons": [{
-                "src": iconUrl,
-                "sizes": "192x192",
-                "type": "image/png"
-            }]
-        };
-        const manifestString = JSON.stringify(manifest);
-        const manifestBase64 = btoa(manifestString);
-        document.getElementById('pwa-manifest').href = `data:application/json;base64,${manifestBase64}`;
+        // --- PWA ASSET INJECTION REMOVED FROM HERE (Now in HEAD) ---
 
         // --- ENVIRONMENT SETUP ---
         const inCanvasEnvironment = typeof __firebase_config !== 'undefined';
