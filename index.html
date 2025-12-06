@@ -1194,8 +1194,26 @@
             reader.readAsText(file);
         }
 
+        // UPDATED: Robust Initialization with "Rescue Loader"
         async function initWasmBoy() {
             if (wasmBoyInitialized) return;
+            
+            // 1. Check if library is loaded
+            if (!window.WasmBoy) {
+                // Rescue: Try to inject the script dynamically if it's missing
+                await new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/wasmboy@0.6.0/dist/wasmboy.min.js';
+                    script.onload = resolve;
+                    script.onerror = () => reject(new Error("Could not download Emulator Core. Check Internet."));
+                    document.head.appendChild(script);
+                });
+            }
+
+            // 2. Final check
+            if (!window.WasmBoy) {
+                throw new Error("Emulator Engine failed to initialize.");
+            }
             
             const romCanvas = document.getElementById('rom-canvas');
             
@@ -1213,7 +1231,7 @@
                 tileBatchProcessing: true,
                 backgroundBatchProcessing: true,
                 spriteBatchProcessing: true,
-                canvas: romCanvas, // Render to our existing canvas
+                canvas: romCanvas, 
                 wasmPath: 'https://cdn.jsdelivr.net/npm/wasmboy@0.6.0/dist/wasmboy.wasm'
             });
             
