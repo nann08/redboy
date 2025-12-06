@@ -16,7 +16,7 @@
     <script>
         (function() {
             // RESTORED: The original icon string
-            const ICON_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAAEg+pWNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+/Pvo88/gAAAJZSURBVHja7Nw9SstQGIBh8/tD0U1wFO7A3biZtXQPt7C2sLNxB07O4A4cFDqYQJtCUgT1POF7A4EkJ/zk5GFvR0dHR2fW6/V6fXl92Ww2X5fL5buPj4/vbrfb5+Fw+DydTp+m0+nz9XrtE4n7/f4z/X6/X6/X6/vj8fg1xvi62WxeZ7PZ12w2+57NZl+32+334XD4MpvNvnq93rd6vX6YTCbfp9Pp13a7/ZzP51/r9fqx1+t9rdfrh+l0+j2fzz9ns9nPfD7/ms/nP4fD4dtsNvtardbP4/H4Yz6ff0+n08/ZbPaz2Wx+1uv1w2Qy+ZpOp5+z2exns9n8rNfrh8lk8jWdTj9ns9nPZrP5Wa/XD5PJ5Gs6nX7OZrOfzWbzs16vHyaTydf/6fR7Pp9/zGazn/l8/jWfz38Oh8O32Wz2tVqtH4B/wAAAAAABAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAwD8CDAAh9QZ882j32AAAAABJRU5ErkJggg==';
+            const ICON_BASE64 = 'iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAAEg+pWNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+/Pvo88/gAAAJZSURBVHja7Nw9SstQGIBh8/tD0U1wFO7A3biZtXQPt7C2sLNxB07O4A4cFDqYQJtCUgT1POF7A4EkJ/zk5GFvR0dHR2fW6/V6fXl92Ww2X5fL5buPj4/vbrfb5+Fw+DydTp+m0+nz9XrtE4n7/f4z/X6/X6/X6/vj8fg1xvi62WxeZ7PZ12w2+57NZl+32+334XD4MpvNvnq93rd6vX6YTCbfp9Pp13a7/ZzP51/r9fqx1+t9rdfrh+l0+j2fzz9ns9nPfD7/ms/nP4fD4dtsNvtardbP4/H4Yz6ff0+n08/ZbPaz2Wx+1uv1w2Qy+ZpOp5+z2exns9n8rNfrh8lk8jWdTj9ns9nPZrP5Wa/XD5PJ5Gs6nX7OZrOfzWbzs16vHyaTydf/6fR7Pp9/zGazn/l8/jWfz38Oh8O32Wz2tVqtH4B/wAAAAAABAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAAAEAAAAAAQAAwD8CDAAh9QZ882j32AAAAABJRU5ErkJggg==';
             const iconUrl = `data:image/png;base64,${ICON_BASE64}`;
 
             const linkIcon = document.createElement('link');
@@ -539,7 +539,7 @@
                     <!-- Virtual Keypad -->
                     <div id="key-selection-modal" class="menu-ui" style="display: none; z-index: 300;">
                         <h2 class="text-xl font-bold mb-4 text-gray-800">Map <span id="binding-label-display" class="text-red-600"></span></h2>
-                        <div id="virtual-keypad" class="grid grid-cols-4 gap-4 p-4 max-w-sm overflow-y-auto" style="max-height: 70%;"></div>
+                        <div id="virtual-keypad" class="grid grid-cols-5 gap-2 p-2 max-w-sm overflow-y-auto" style="max-height: 70%;"></div>
                         <button id="btn-cancel-key-select" class="mt-4 px-6 py-2 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition">Cancel</button>
                     </div>
 
@@ -831,11 +831,22 @@
             document.getElementById('binding-label-display').textContent = label;
             const keypad = document.getElementById('virtual-keypad');
             keypad.innerHTML = ''; 
+            
+            // EXPANDED: Full Keypad for Mobile Users
             const keys = [
-                {k:'w',c:'KeyW',d:'W'},{k:'a',c:'KeyA',d:'A'},{k:'s',c:'KeyS',d:'S'},{k:'d',c:'KeyD',d:'D'},
-                {k:' ',c:'Space',d:'SPACE',kc:32},{k:'Enter',c:'Enter',d:'ENTER',kc:13},
-                {k:'j',c:'KeyJ',d:'J'},{k:'k',c:'KeyK',d:'K'},{k:'l',c:'KeyL',d:'L'},{k:'i',c:'KeyI',d:'I'},
-                {k:'z',c:'KeyZ',d:'Z'},{k:'x',c:'KeyX',d:'X'},{k:'c',c:'KeyC',d:'C'},
+                // Numbers
+                {k:'1',c:'Digit1',d:'1'},{k:'2',c:'Digit2',d:'2'},{k:'3',c:'Digit3',d:'3'},{k:'4',c:'Digit4',d:'4'},{k:'5',c:'Digit5',d:'5'},
+                {k:'6',c:'Digit6',d:'6'},{k:'7',c:'Digit7',d:'7'},{k:'8',c:'Digit8',d:'8'},{k:'9',c:'Digit9',d:'9'},{k:'0',c:'Digit0',d:'0'},
+                // QWERTY
+                {k:'q',c:'KeyQ',d:'Q'},{k:'w',c:'KeyW',d:'W'},{k:'e',c:'KeyE',d:'E'},{k:'r',c:'KeyR',d:'R'},{k:'t',c:'KeyT',d:'T'},
+                {k:'y',c:'KeyY',d:'Y'},{k:'u',c:'KeyU',d:'U'},{k:'i',c:'KeyI',d:'I'},{k:'o',c:'KeyO',d:'O'},{k:'p',c:'KeyP',d:'P'},
+                {k:'a',c:'KeyA',d:'A'},{k:'s',c:'KeyS',d:'S'},{k:'d',c:'KeyD',d:'D'},{k:'f',c:'KeyF',d:'F'},{k:'g',c:'KeyG',d:'G'},
+                {k:'h',c:'KeyH',d:'H'},{k:'j',c:'KeyJ',d:'J'},{k:'k',c:'KeyK',d:'K'},{k:'l',c:'KeyL',d:'L'},
+                {k:'z',c:'KeyZ',d:'Z'},{k:'x',c:'KeyX',d:'X'},{k:'c',c:'KeyC',d:'C'},{k:'v',c:'KeyV',d:'V'},{k:'b',c:'KeyB',d:'B'},
+                {k:'n',c:'KeyN',d:'N'},{k:'m',c:'KeyM',d:'M'},
+                // Special
+                {k:' ',c:'Space',d:'SPACE',kc:32},{k:'Enter',c:'Enter',d:'ENTER',kc:13},{k:'Shift',c:'ShiftLeft',d:'SHIFT'},{k:'Control',c:'ControlLeft',d:'CTRL'},
+                // Arrows
                 {k:'ArrowUp',c:'ArrowUp',d:'↑'},{k:'ArrowDown',c:'ArrowDown',d:'↓'},
                 {k:'ArrowLeft',c:'ArrowLeft',d:'←'},{k:'ArrowRight',c:'ArrowRight',d:'→'}
             ];
@@ -843,7 +854,7 @@
             keys.forEach(vKey => {
                 const btn = document.createElement('div');
                 btn.className = 'virtual-key-btn';
-                btn.textContent = vKey.display;
+                btn.textContent = vKey.display || vKey.d;
                 btn.addEventListener('click', () => {
                     keyMap[label] = { 
                         key: vKey.k, 
