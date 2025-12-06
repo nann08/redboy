@@ -450,18 +450,17 @@
         .dpad-h { width: 130px; height: 40px; top: 45px; left: 0; }
         .dpad-v { width: 40px; height: 130px; left: 45px; top: 0; }
         
-        /* UPDATED CENTER: Flushed look */
+        /* UPDATED CENTER: Perfectly Flushed */
         .dpad-center {
             position: absolute; 
-            width: 42px; /* Slightly larger to cover seams */
-            height: 42px; 
+            width: 40px; /* Reduced from 42px to match arm width exactly */
+            height: 40px; 
             background-color: #1c1c1c; 
-            top: 44px; /* Centered */
-            left: 44px; 
+            top: 45px; /* Aligned perfectly with arms */
+            left: 45px; 
             z-index: 15;
-            /* Smooth it out */
+            /* Tighter radius to blend into the cross shape */
             border-radius: 4px; 
-            /* Remove hard edges with a subtle gradient matching the arms */
             background: radial-gradient(circle at center, #1c1c1c 60%, #1c1c1c 100%);
         }
         
