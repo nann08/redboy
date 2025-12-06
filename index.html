@@ -968,14 +968,20 @@
 
             const handleStart = (e) => {
                 e.preventDefault(); 
-                // ALLOW Start/Select to be pressed even if menu is open
+                
+                const control = e.currentTarget;
+                const label = control.getAttribute('data-label');
+
+                // FIX: If menu is open, completely ignore game buttons (A, B, Dpad)
+                // Only allow Start and Select to function
+                if (currentMenu !== null && label !== 'Start' && label !== 'Select') {
+                    return;
+                }
                 
                 initAudio();
                 playHapticSound();
                 if (navigator.vibrate) navigator.vibrate(15);
                 
-                const control = e.currentTarget;
-                const label = control.getAttribute('data-label');
                 control.pressTime = Date.now();
                 control.isTap = true;
                 
@@ -990,20 +996,16 @@
                 const control = e.currentTarget;
                 const label = control.getAttribute('data-label');
                 
-                // FIXED: Guard logic - Block other inputs if menu is open, BUT allow Select/Start
-                if (currentMenu !== null && label !== 'Select' && label !== 'Start') {
-                    return;
-                }
-                
+                // FIX: Always allow visual cleanup to run, even if menu is open.
+                // This ensures buttons never get "stuck" in the pressed state.
                 handleVirtualPress(label, false, true); 
                 handleVisualPress(control, false);
                 updateDpadVisuals(label, false);
                 
-                // Smart Menu Triggers on short tap
+                // Only run Menu Toggle logic if the specific button was tapped
                 if (['Select', 'Start'].includes(label) && control.isTap) {
                     const duration = Date.now() - (control.pressTime || 0);
                     if (duration < TAP_THRESHOLD_MS) {
-                        // RESTORED: Start button toggles Controls, Select toggles Main Menu
                         if (label === 'Select') toggleMenu('main-menu'); 
                         else if (label === 'Start') toggleMenu('key-binding-menu'); 
                     }
