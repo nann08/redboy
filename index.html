@@ -69,7 +69,7 @@
         }
 
         :root {
-            --screen-color: #9bbc0f;
+            --screen-color: #ffffff; /* Updated to White */
             --screen-shadow: #0f380f;
             --safe-top: env(safe-area-inset-top, 20px);
             --safe-bottom: env(safe-area-inset-bottom, 20px);
@@ -200,14 +200,14 @@
             height: 100%;
             background: 
                 repeating-linear-gradient(to bottom, 
-                    rgba(0,0,0,0.1) 0px, 
-                    rgba(0,0,0,0.1) 1px, 
+                    rgba(0,0,0,0.05) 0px, 
+                    rgba(0,0,0,0.05) 1px, 
                     transparent 1px, 
                     transparent 2px
                 ),
                 repeating-linear-gradient(to right, 
-                    rgba(0,0,0,0.05) 0px, 
-                    rgba(0,0,0,0.05) 1px, 
+                    rgba(0,0,0,0.02) 0px, 
+                    rgba(0,0,0,0.02) 1px, 
                     transparent 1px, 
                     transparent 2px
                 );
@@ -251,7 +251,26 @@
             justify-content: center;
             z-index: 20;
             text-align: center;
-            color: #0f380f;
+            color: #000000;
+        }
+
+        /* Nintendo-style Logo */
+        .nann-pill {
+            border: 3px solid #000000;
+            border-radius: 50px;
+            padding: 4px 24px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: transparent;
+        }
+
+        .nann-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #000000;
+            letter-spacing: 1px;
+            line-height: 1;
         }
 
         .insert-cart-btn {
@@ -491,9 +510,9 @@
 
                     <!-- Start Screen Overlay -->
                     <div id="start-screen">
-                        <div class="font-bold text-lg mb-1 tracking-wider opacity-80">NANN BOY</div>
-                        <div class="text-xs mb-4 opacity-70">EMULATION SYSTEM</div>
-                        <button id="btn-insert-cart" class="insert-cart-btn">INSERT CARTRIDGE</button>
+                        <div class="nann-pill">
+                            <div class="nann-logo-text">NANN BOY</div>
+                        </div>
                     </div>
                     
                     <iframe id="game-iframe" src="about:blank" allow="keyboard; game" referrerpolicy="no-referrer"></iframe>
@@ -1021,7 +1040,7 @@
             });
             
             // Menu Buttons Logic
-            document.getElementById('btn-insert-cart').addEventListener('click', () => openMenu('upload-menu'));
+            // Note: btn-insert-cart removed from UI, logic handled by Select menu now
             
             // KEY MAP PAGE RESTORED LOGIC:
             // "Close" button now fully closes the menu and returns to game (no navigation to main menu)
