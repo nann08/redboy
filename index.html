@@ -973,11 +973,8 @@
                 const control = e.currentTarget;
                 const label = control.getAttribute('data-label');
 
-                // FIX: If menu is open, completely ignore game buttons (A, B, Dpad)
-                // Only allow Start and Select to function
-                if (currentMenu !== null && label !== 'Start' && label !== 'Select') {
-                    return;
-                }
+                // UNLOCKED: Removed the guard clause that blocked inputs when menu was open.
+                // Buttons will now animate and make sound at all times.
                 
                 initAudio();
                 playHapticSound();
@@ -997,8 +994,9 @@
                 const control = e.currentTarget;
                 const label = control.getAttribute('data-label');
                 
-                // FIX: Always allow visual cleanup to run, even if menu is open.
-                // This ensures buttons never get "stuck" in the pressed state.
+                // UNLOCKED: Removed guard clause here too.
+                // This ensures visual "lift" animation always plays, so buttons don't stick.
+                
                 handleVirtualPress(label, false, true); 
                 handleVisualPress(control, false);
                 updateDpadVisuals(label, false);
